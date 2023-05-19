@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: [
                   Icon(
-                    Icons.lock,
+                    Icons.access_time_outlined,
                     size: 150,
                   ),
                   Text(

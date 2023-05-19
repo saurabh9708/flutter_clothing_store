@@ -12,10 +12,16 @@ class HomeAppBar extends StatelessWidget {
       padding: EdgeInsets.all(25),
       child: Row(
         children: [
-          Icon(
-            Icons.sort,
-            size: 30,
-            color: Colors.black,
+          IconButton(
+            icon: Icon(
+              Icons.sort,
+              size: 30,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+            tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
           ),
           Padding(
             padding: EdgeInsets.only(left: 20),

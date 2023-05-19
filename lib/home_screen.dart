@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_clothing_store/widgets/ItemsWidget.dart';
 
 import 'components/CategoriesWidgets.dart';
 import 'widgets/HomeAppBar.dart';
@@ -18,7 +21,7 @@ class MyHomeScreen extends StatelessWidget {
             child: SafeArea(
               child: Center(
                 child: Container(
-                  height: 500,
+                  height: 1500,
                   padding: EdgeInsets.only(top: 15),
                   decoration: BoxDecoration(
                     color: Color(0xFFEDECF2),
@@ -30,8 +33,10 @@ class MyHomeScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       Container(
-                        margin: EdgeInsets.symmetric(horizontal: 15),
-                        padding: EdgeInsets.symmetric(horizontal: 15),
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                         height: 50,
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -72,11 +77,52 @@ class MyHomeScreen extends StatelessWidget {
                         ),
                       ),
                       CategoriesWidget(),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        margin:
+                            EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+                        child: Text(
+                          "Best Selling",
+                          style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.deepOrange),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 0.3,
+                      ),
+                      ItemsWidget()
                     ],
                   ),
                 ),
               ),
             ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Colors.transparent,
+        onTap: (index) {
+          Navigator.pushNamed(context, "cartPage");
+        },
+        height: 50,
+        color: Colors.black,
+        items: const [
+          Icon(
+            CupertinoIcons.cart_fill,
+            size: 30,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.home,
+            size: 30,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.list,
+            size: 30,
+            color: Colors.white,
           ),
         ],
       ),
