@@ -35,7 +35,9 @@ class HomeAppBar extends StatelessWidget {
             padding: EdgeInsets.all(7),
             // badgeContent: Text("3"),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, "CartPage");
+              },
               child: Icon(
                 Icons.shopping_bag,
                 size: 32,

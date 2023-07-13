@@ -1,12 +1,18 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, file_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_clothing_store/models/product_model.dart';
+
+import 'package:flutter_clothing_store/routers/routes.dart';
+
+import '../models/detail_page.dart';
 
 class ItemsWidget extends StatelessWidget {
   const ItemsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var name;
     return GridView.count(
       childAspectRatio: 0.68,
       physics: NeverScrollableScrollPhysics(),
@@ -16,7 +22,7 @@ class ItemsWidget extends StatelessWidget {
         for (int i = 1; i < 6; i++)
           Container(
             padding: EdgeInsets.only(left: 15, right: 15, top: 10),
-            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+            margin: EdgeInsets.symmetric(vertical: 2, horizontal: 11),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
@@ -39,22 +45,38 @@ class ItemsWidget extends StatelessWidget {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Icon(
-                      Icons.favorite_border_rounded,
-                      color: Colors.indigo,
+                    IconButton(
+                      icon: Icon(
+                        Icons.favorite_border_rounded,
+                        color: Colors.indigo,
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, MyRoutes.Detailpage);
+                      },
                     ),
                   ],
                 ),
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    margin: EdgeInsets.all(10),
-                    child: Image.asset(
-                      "assets/cloths/$i.png",
-                      // scale: 5,
-                      height: 120,
-                      width: 120,
-                      fit: BoxFit.fill,
+
+                GestureDetector(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              DetailPage(product: products[i]),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      margin: EdgeInsets.all(10),
+                      child: Image.asset(
+                        "assets/cloths/$i.png",
+                        // scale: 5,
+                        height: 120,
+                        width: 120,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),
@@ -62,7 +84,7 @@ class ItemsWidget extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: 8),
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Bencho ",
+                    products.name,
                     style: TextStyle(
                         fontSize: 18,
                         color: Colors.black,
@@ -70,25 +92,25 @@ class ItemsWidget extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 0.5,
+                  height: 0.1,
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Heavy Black Tshirt",
+                    "\${product.price}",
                     style: TextStyle(fontSize: 15, color: Colors.black87),
                   ),
                 ),
-                SizedBox(
-                  height: 0.5,
-                ),
+                // SizedBox(
+                //   height: 0.5,
+                // ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
                       Text(
-                        "₹ 699",
+                        "\${product.price}",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,

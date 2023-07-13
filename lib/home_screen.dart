@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clothing_store/widgets/ItemsWidget.dart';
 
 import 'components/CategoriesWidgets.dart';
+import 'routers/routes.dart';
 import 'widgets/HomeAppBar.dart';
 
 class MyHomeScreen extends StatelessWidget {
@@ -21,7 +22,7 @@ class MyHomeScreen extends StatelessWidget {
             child: SafeArea(
               child: Center(
                 child: Container(
-                  height: 1500,
+                  //height: 1500,
                   padding: EdgeInsets.only(top: 15),
                   decoration: BoxDecoration(
                     color: Color(0xFFEDECF2),
@@ -103,16 +104,19 @@ class MyHomeScreen extends StatelessWidget {
       ),
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
-        onTap: (index) {
-          Navigator.pushNamed(context, "cartPage");
-        },
+        onTap: (value) {},
         height: 50,
         color: Colors.black,
-        items: const [
-          Icon(
-            CupertinoIcons.cart_fill,
-            size: 30,
-            color: Colors.white,
+        items: [
+          IconButton(
+            icon: Icon(
+              CupertinoIcons.cart_fill,
+              size: 30,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.pushNamed(context, MyRoutes.CartPage);
+            },
           ),
           Icon(
             Icons.home,

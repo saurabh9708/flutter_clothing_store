@@ -8,8 +8,9 @@ import 'package:go_router/go_router.dart';
 class MyRoutes {
   static String loginRoute = "/login";
   static String homeRoute = "/home";
-  static String cartPage = "/CartPage";
-  static String CartAppBar = "/CartAppBar";
+  static String CartPage = "/CartPage";
+  // static String CartAppBar = "/CartAppBar";
+  static String Detailpage = "/DetailPage";
 }
 
 
